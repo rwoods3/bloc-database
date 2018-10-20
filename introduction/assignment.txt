@@ -1,0 +1,105 @@
+What data types do each of these values represent?
+
+"A Clockwork Orange" <- VARCHAR
+42 <- INT
+09/02/1945 <- DATE
+98.7 <- FLOAT or DECIMAL
+$15.99 <- FLOAT or DECIMAL
+
+Explain when a database would be used. Explain when a text file would be used.
+
+A database would be used when data needs to be persisted/modified across sessions or by multiple users.
+Text files would be used for static data that doesn't change or is only changed by one person (like maybe an Admin) so that writes do not fail to due to file locking.
+
+Describe one difference between SQL and other programming languages.
+
+SQL is a declarative language. SQL allows you to specify WHAT you want to do, not HOW, the implementation is handled by the database engine itself.
+
+In your own words, explain how the pieces of a database system fit together at a high level.
+
+I view the database as a middle layer (model) between the UI (view) and the backend business logic (controller) of an application.
+
+Explain the meaning of table, row, column, and value.
+
+A table represents a collection of common data laid out in rows and column headings
+
+A row represents a single piece of data in that table (a single purchase, a single user, a single ...)
+
+A column represents the type of data in each row in that column (the purchase amount, the user name, the ...)
+
+The value is whatever the value is in that row/column, value depends on the data type of that column
+
+List three data types that can be used in a table.
+
+VARCHAR
+INT
+DATE
+
+Given this payments table, provide an English description of the following queries and include their results:
+
+     SELECT date, amount
+     FROM payments;
+
+     Return the date and amount fields from EVER (because there is no WHERE clause) row in the payments table.
+
+     SELECT amount
+     FROM payments
+     WHERE amount > 500;
+
+     Return the amount field from the payments table for every row that has an amount greater than 500.
+
+     SELECT *
+     FROM payments
+     WHERE payee = 'Mega Foods';
+
+     Return ALL fields (because of the * wildcard) from the payments table where the payee field is equal to 'Mega Foods'.
+
+Given this users table, write SQL queries using the following criteria and include the output:
+
+The email and sign-up date for the user named DeAndre Data.
+
+---
+
+**Query #1**
+
+    SELECT email, signup FROM users WHERE name = 'DeAndre Data';
+
+| email             | signup                   |
+| ----------------- | ------------------------ |
+| datad@comcast.net | 2008-01-20T00:00:00.000Z |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/iQAEYktwysXqcLQHv2dwbc/0)
+
+The user ID for the user with email 'aleesia.algorithm@uw.edu'.
+
+---
+
+**Query #1**
+
+    SELECT userid FROM users WHERE email = 'aleesia.algorithm@uw.edu';
+
+| userid |
+| ------ |
+| 1      |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/iQAEYktwysXqcLQHv2dwbc/0)
+
+All the columns for the user ID equal to 4.
+
+---
+
+**Query #1**
+
+    SELECT * FROM users WHERE userid = 4;
+
+| userid | name           | email             | signup                   |
+| ------ | -------------- | ----------------- | ------------------------ |
+| 4      | Brandy Boolean | bboolean@nasa.gov | 1999-10-15T00:00:00.000Z |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/iQAEYktwysXqcLQHv2dwbc/0)
